@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Admin Template</title>
+    <meta name="author" content="David Grzyb">
+    <meta name="description" content="">
+
+    <!-- Tailwind -->
+    <link href="/css/tailwind.css" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.6.1/dist/cdn.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+
+        .font-family-karla {
+            font-family: karla;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 font-family-karla" x-data="{ isOpen: false, scrollAtTop:false}"
+    @scroll.window="window.pageYOffset > 40 ? scrollAtTop = true: scrollAtTop= false">
+    <!-- <div x-data="{scrollAtTop:true}"> -->
+    <nav class="bg-white shadow mb-10 sticky top-0 w-full ">
+        <div class="max-w-6xl mx-auto py-3 px-6 md:px-0 md:flex md:justify-between md:items-center">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img class="h-40 shadow transition-all duration-200"
+                        :class="{'h-40':!scrollAtTop,'h-16': scrollAtTop}" src="/logo.PNG" alt="">
+                    <!-- <a href="#" class="text-gray-800 text-xl hover:text-gray-700 ml-4">David Grzyb</a> -->
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex flex-col items-end md:hidden">
+                    <div class="flex">
+                        <div class='m-1 border-2 p-2 hover:text-indigo-500 font-medium text-sm transition-all duration-200'
+                            :class="{'hidden': scrollAtTop}"><button>
+                                EN
+                            </button></div>
+                        <div :class="{'hidden': scrollAtTop}"
+                            class=' transition-all duration-200 m-1 border-2 p-2 hover:text-indigo-500 font-medium text-sm'>
+                            <button>
+                                TR
+                            </button></div>
+
+                    </div>
+                    <div class="flex mt-1 mb-1">
+                        <!-- <div
+                            class='mr-2 px-12 font-medium py-2 border-2 text-sm bg-blue-600 hover:bg-blue-900 cursor-pointer text-white'>
+                            Search</div> -->
+                        <div :class="{'hidden': scrollAtTop}"
+                            class=" transition-all duration-200 flex px-2 justify-center items-center border-2">
+                            <div><button class='hover:text-indigo-500 font-medium text-sm'>Login</button></div>
+                            <div class="vertical bg-gray-400 h-4 m-2"></div>
+                            <div><button class='hover:text-indigo-500 font-medium text-sm'>Sign up</button></div>
+
+                        </div>
+
+                    </div>
+                    <button type="button"
+                        class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
+                        aria-label="toggle menu" @click="isOpen = !isOpen">
+                        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                            <path fill-rule="evenodd"
+                                d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu, if mobile set to hidden -->
+            <div :class="isOpen ? 'show' : 'hidden'"
+                class="transition-all duration-200 md:flex flex-col md:justify-center items-end mt-4 md:mt-0">
+                <div class="hidden md:flex">
+                    <div :class="{'hidden': scrollAtTop}"
+                        class='transition-all duration-200 m-1 border-2 p-2 hover:text-indigo-500 font-medium text-sm'>
+                        <button>
+                            EN
+                        </button></div>
+                    <div :class="{'hidden': scrollAtTop}"
+                        class='transition-all duration-200 m-1 border-2 p-2 hover:text-indigo-500 font-medium text-sm'>
+                        <button>
+                            TR
+                        </button></div>
+
+                </div>
+                <div class="flex justify-center items-center mt-1 mb-1">
+
+                    <div :class="{'md:hidden': scrollAtTop}"
+                        class='transition-all duration-200 mr-2 px-12 font-medium py-2 border-2 text-sm bg-blue-600 hover:bg-blue-900 cursor-pointer text-white'>
+                        Search</div>
+                    <div :class="{'md:hidden': scrollAtTop}"
+                        class=" transition-all duration-200 hidden md:flex px-2 justify-center items-center border-2">
+                        <button :class="{'hidden': scrollAtTop}"
+                            class='transition-all duration-200 hover:text-indigo-500 font-medium text-sm'>Login</button>
+                        <div :class="{'hidden': scrollAtTop}"
+                            class="transition-all duration-200 vertical bg-gray-400 h-4 m-2"></div>
+                        <button :class="{'hidden': scrollAtTop}"
+                            class='transition-all duration-200 hover:text-indigo-500 font-medium text-sm'>Sign
+                            up</button>
+
+                    </div>
+
+                </div>
+                <div :class="{'md:mt-0': scrollAtTop}"
+                    class="transition-all duration-200 flex flex-col justify-center items-start mt-4 md:flex-row md:ml-6 md:justify-center md:items-center">
+                    <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                        href="#">Home</a>
+                    <div class=" hidden md:block vertical bg-gray-400 h-4 m-1"></div>
+
+                    <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0" href="#">The
+                        Latest Articals</a>
+                    <div class=" hidden md:block vertical bg-gray-400 h-4 m-1"></div>
+
+
+                    <div x-data="{ open1: false,
+    
+    items: ['Food 1', 'Food 2', 'Food 3','Food 4','Food 5','Food 6','Food 7','Food 8','Food 9','Food 10','Food 11','Food 12'],
+}">
+                        <a x-on:click="open1 = ! open1" @mouseover="open1 = true"
+                            class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                            href="#">Blogger</a>
+
+                        <div x-show="open1" @mouseover.outside="open1 = false" x-transition
+                            @click.outside="open1 = false" class="md:absolute bg-white w-24 px-4 pt-3">
+                            <ul>
+                                <template x-for="item in items" :key="item">
+                                    <li x-text="item"
+                                        class='text-sm text-gray-700 font-medium cursor-pointer hover:text-indigo-500 md:mx-0 md:my-1'>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class=" hidden md:block vertical bg-gray-400 h-4 m-1"></div>
+                    <div x-data="{ open1: false,
+                        items: ['Activity 1', 'Activity 2', 'Activity 3','Activity 4','Activity 5','Activity 6'],
+                    }">
+                        <a x-on:click="open1 = ! open1" @mouseover="open1 = true"
+                            class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                            href="#">Activities</a>
+
+                        <div x-show="open1" @mouseover.outside="open1 = false" x-transition
+                            @click.outside="open1 = false" class="md:absolute bg-white w-24 px-4 pt-3">
+                            <ul>
+                                <template x-for="item in items" :key="item">
+                                    <li x-text="item"
+                                        class='text-sm text-gray-700 font-medium cursor-pointer hover:text-indigo-500 md:mx-0 md:my-1'>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:block vertical bg-gray-400 h-4 m-1"></div>
+                    <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                        href="#">Forum</a>
+                    <div class=" hidden md:block vertical bg-gray-400 h-4 m-1"></div>
+
+                    <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                        href="#">Blogger</a>
+                    <div class=" hidden md:block vertical bg-gray-400 h-4 m-1"></div>
+
+                    <a class="my-1 text-sm text-gray-700 font-medium hover:text-indigo-500 md:mx-4 md:my-0"
+                        href="#">Services</a>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class='d bg-gray-900'></div>
+
+    <!-- </div> -->
+</body>
+
+</html>

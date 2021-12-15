@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.vertical{
+    width: 2px;
+}
+.d{
+    height: 800px;
+}
+@layer base{
+    html{
+        scroll-behavior:smooth;
+    }
+}
+html{
+    scroll-behavior:smooth;
+}
